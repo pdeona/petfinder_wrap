@@ -110,7 +110,6 @@ RSpec.describe Petfinder::Client do
       end
 
       it "returns a single Shelter object" do
-        p shelter
         expect(shelter).to be_a Petfinder::Shelter
       end
     end
@@ -137,8 +136,36 @@ RSpec.describe Petfinder::Client do
 
   describe Petfinder::Shelter do
     context "initialize" do
-      it "creates a shelter object"
-      it "has attribute reader methods"
+      let :shelter do
+        VCR.use_cassette("petfinder/get_shelter") do
+          shelter = Client.new.get_shelter "FL54"
+        end
+      end
+
+      it "creates a shelter object" do
+        expect(shelter).to be_a Shelter
+      end
+
+      it "has attribute reader methods" do
+        expect{ shelter.name }.not_to raise_error
+      end
+
+      it "has a get_pets method" do
+        expect { shelter.get_pets }.not_to raise_error
+      end
+      context "#getPets" do
+
+        let :shelter_pets do
+          VCR.use_cassette('petfinder/shelter_get_pets') do
+            shelter = Client.new.get_shelter "FL54"
+            shelter_pets = shelter.get_pets
+          end
+        end
+
+        it "returns an Array of Pet objects" do
+          expect(shelter_pets.first).to be_a Pet
+        end
+      end
     end
   end
 end

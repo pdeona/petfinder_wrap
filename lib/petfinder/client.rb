@@ -39,13 +39,24 @@ module Petfinder
     def get_shelter id
       get_shelter_request = API_BASE_URI + "shelter.get?key=#{@api_key}&id=#{id}&format=json"
       response = open(get_shelter_request).read
-      response
+      if resp = JSON.parse(response)
+        Petfinder::Shelter.new(resp["petfinder"]["shelter"])
+      else
+        raise Petfinder::Error "No valid JSON response from API"
+      end
     end
 
     def find_shelters location
       find_shelters_request = API_BASE_URI + "shelter.find?key=#{@api_key}&location=#{location}"
       response = open(find_shelters_request).read
-      response
+
     end
   end
+
+  private
+
+  def parse_pet_resp response
+
+  end
+
 end
