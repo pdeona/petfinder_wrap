@@ -10,6 +10,34 @@ end
 
 
 RSpec.describe Petfinder::Client do
+  context "config" do
+
+    it "allows config to be run with a block" do
+      expect{
+        Petfinder.configure do |config|
+          config = "test"
+        end
+        }.not_to raise_error
+    end
+
+    it "allows api keys to be entered as a block" do
+      expect{
+        Petfinder.configure do |config|
+          config.api_key = "31644babd91732885c1b7962a39b02bd"
+          config.api_secret = "3d72e8837e2db4cb644a60b063905724"
+        end
+        }.not_to raise_error
+    end
+
+    it "successfully initializes new clients with config settings" do
+      Petfinder.configure do |config|
+        config.api_key = "31644babd91732885c1b7962a39b02bd"
+        config.api_secret = "3d72e8837e2db4cb644a60b063905724"
+      end
+      expect{ Petfinder::Client.new }.not_to raise_error
+    end
+  end
+
   context "initialize" do
 
     let :c {
@@ -30,9 +58,9 @@ RSpec.describe Petfinder::Client do
       expect(c.api_secret).to eq Petfinder.api_secret
     end
 
-    context "Client#getPet" do
+    context "Client#findPet" do
       let :get_a_pet do
-        c.get_pet(38747365)
+        c.find_pet(38747365)
       end
 
       it "sends request to the api" do
@@ -41,27 +69,76 @@ RSpec.describe Petfinder::Client do
         end
       end
 
-      it "gets a valid JSON response" do
+      it "makes a Pet object with the response" do
         VCR.use_cassette('petfinder/find_pet') do
-          expect(c).not_to be nil
+          pet = get_a_pet
+          expect(pet).to be_a Petfinder::Pet
         end
       end
     end
 
-  end
+    context "Client#getPets" do
+      let :pets do
+        VCR.use_cassette('petfinder/find_pets') do
+          pets = c.find_pets "dog", "33165"
+        end
+      end
 
-end
+      it "sends an API request using .findPets" do
+        expect(pets).not_to be nil
+      end
 
-RSpec.describe Petfinder::Pet do
-  context "initialize" do
+      it "retrieves an array of Pet objects" do
+        expect(pets.first).to be_a Pet
+        expect(pets.last).to be_a Pet
+      end
 
-    let :pet do
-      VCR.use_cassette('petfinder/find_pet') do
+      it "allows user to view individual Pet objects" do
+        expect(pets.first.name).not_to be nil
       end
     end
 
-    it "creates a pet object" do
-      expect(pet).to be_a Pet
+    context "Client#getShelter" do
+      let :shelter do
+        VCR.use_cassette('petfinder/get_shelter') do
+          shelter = c.get_shelter "FL54"
+        end
+      end
+
+      it "sends an API request using .getShelter" do
+        expect(shelter).not_to be nil
+      end
+
+      it "returns a single Shelter object" do
+        p shelter
+        expect(shelter).to be_a Petfinder::Shelter
+      end
+    end
+  end
+
+  describe Petfinder::Pet do
+    context "initialize" do
+
+      let :pet do
+        VCR.use_cassette('petfinder/find_pet') do
+          pet = Client.new.find_pet 38747365
+        end
+      end
+
+      it "creates a pet object" do
+        expect(pet).to be_a Pet
+      end
+
+      it "has attribute reader methods" do
+        expect{ pet.name }.not_to raise_error
+      end
+    end
+  end
+
+  describe Petfinder::Shelter do
+    context "initialize" do
+      it "creates a shelter object"
+      it "has attribute reader methods"
     end
   end
 end
