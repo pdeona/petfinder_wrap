@@ -153,6 +153,7 @@ RSpec.describe Petfinder::Client do
       it "has a get_pets method" do
         expect { shelter.get_pets }.not_to raise_error
       end
+
       context "#getPets" do
 
         let :shelter_pets do
