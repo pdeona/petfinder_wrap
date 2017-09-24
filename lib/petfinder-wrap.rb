@@ -9,10 +9,6 @@ include Petfinder
 module Petfinder
   VERSION = "1.0.0"
 
-  def authenticate client_key
-    @client_key = client_key
-  end
-
   class Error < StandardError; end
 
   class << self

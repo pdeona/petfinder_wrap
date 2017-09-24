@@ -1,21 +1,22 @@
 require "spec_helper"
+require 'vcr'
+
+VCR.configure do |c|
+  #the directory where your cassettes will be saved
+  c.cassette_library_dir = 'spec/vcr'
+  # your HTTP request service.
+  c.hook_into :webmock
+end
 
 
 RSpec.describe Petfinder::Client do
   context "initialize" do
-    let :client_key do
+
+    let :c {
       Petfinder.api_key = "31644babd91732885c1b7962a39b02bd"
-    end
-
-    let :client_secret do
       Petfinder.api_secret = "3d72e8837e2db4cb644a60b063905724"
-    end
-
-    let :c do
-      client_key
-      client_secret
       c = Client.new
-    end
+    }
 
     it "creates a Client object on initialize" do
       expect(c).not_to be nil
@@ -30,19 +31,37 @@ RSpec.describe Petfinder::Client do
     end
 
     context "Client#getPet" do
+      let :get_a_pet do
+        c.get_pet(38747365)
+      end
 
       it "sends request to the api" do
-        expect{ c.get_pet(12345) }.not_to raise_error
+        VCR.use_cassette('petfinder/find_pet') do
+          expect{ get_a_pet }.not_to raise_error
+        end
       end
 
-      it "gets a valid response" do
-        c.get_pet(12345)
-        expect(c.response).not_to be nil
+      it "gets a valid JSON response" do
+        VCR.use_cassette('petfinder/find_pet') do
+          expect(c).not_to be nil
+        end
       end
-
-      it "creates a Pet object"
     end
 
   end
 
+end
+
+RSpec.describe Petfinder::Pet do
+  context "initialize" do
+
+    let :pet do
+      VCR.use_cassette('petfinder/find_pet') do
+      end
+    end
+
+    it "creates a pet object" do
+      expect(pet).to be_a Pet
+    end
+  end
 end
