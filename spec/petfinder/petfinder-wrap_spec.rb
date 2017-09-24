@@ -151,7 +151,9 @@ RSpec.describe Petfinder::Client do
       end
 
       it "has a get_pets method" do
-        expect { shelter.get_pets }.not_to raise_error
+        VCR.use_cassette("petfinder/shelter_get_pets") do
+          expect{ shelter.get_pets }.not_to raise_error
+        end
       end
 
       context "#getPets" do
