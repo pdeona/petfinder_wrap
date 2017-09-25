@@ -10,6 +10,13 @@ end
 
 
 RSpec.describe Petfinder::Client do
+
+  context "initialize" do
+    it "won't initialize without an API key" do
+      expect { Client.new }.to raise_error
+    end
+  end
+
   context "config" do
 
     it "allows config to be run with a block" do
@@ -24,7 +31,6 @@ RSpec.describe Petfinder::Client do
       expect{
         Petfinder.configure do |config|
           config.api_key = "31644babd91732885c1b7962a39b02bd"
-          config.api_secret = "3d72e8837e2db4cb644a60b063905724"
         end
         }.not_to raise_error
     end
@@ -32,7 +38,6 @@ RSpec.describe Petfinder::Client do
     it "successfully initializes new clients with config settings" do
       Petfinder.configure do |config|
         config.api_key = "31644babd91732885c1b7962a39b02bd"
-        config.api_secret = "3d72e8837e2db4cb644a60b063905724"
       end
       expect{ Petfinder::Client.new }.not_to raise_error
     end
