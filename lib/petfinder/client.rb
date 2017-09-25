@@ -47,16 +47,19 @@ module Petfinder
     end
 
     def find_shelters location
-      find_shelters_request = API_BASE_URI + "shelter.find?key=#{@api_key}&location=#{location}"
+      find_shelters_request = API_BASE_URI + "shelter.find?key=#{@api_key}&location=#{location}&format=json"
       response = open(find_shelters_request).read
-
+      res = []
+      if resp = JSON.parse(response)
+        resp["petfinder"]["shelters"]["shelter"].each do |shelter|
+          res << Shelter.new(shelter)
+        end
+      end
+      res
     end
+
   end
 
   private
-
-  def parse_pet_resp response
-
-  end
 
 end

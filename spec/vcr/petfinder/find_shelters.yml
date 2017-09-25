@@ -1,0 +1,77 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.petfinder.com/shelter.find?format=json&key=31644babd91732885c1b7962a39b02bd&location=33165
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 25 Sep 2017 03:16:00 GMT
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '1813'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"@encoding":"iso-8859-1","@version":"1.0","petfinder":{"@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance","lastOffset":{"$t":"25"},"shelters":{"shelter":[{"country":{"$t":"US"},"longitude":{"$t":"-80.3575"},"name":{"$t":"Fairy
+        Tails"},"phone":{"$t":"305-596-9694"},"state":{"$t":"FL"},"address2":{},"email":{"$t":"fairytailsorg@gmail.com"},"city":{"$t":"Miami"},"zip":{"$t":"33173"},"fax":{},"latitude":{"$t":"25.7011"},"id":{"$t":"FL611"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-80.3575"},"name":{"$t":"One
+        By One Dog Rescue, Inc."},"phone":{"$t":"305-321-4051  "},"state":{"$t":"FL"},"address2":{},"email":{"$t":"onebyonedogrescue@aol.com"},"city":{"$t":"Miami"},"zip":{"$t":"33173"},"fax":{},"latitude":{"$t":"25.7011"},"id":{"$t":"FL1185"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-80.3076"},"name":{"$t":"Saving
+        Paws 4 Love"},"phone":{"$t":"3058909310"},"state":{"$t":"FL"},"address2":{},"email":{"$t":"bettypolk@savingpaws4love.org"},"city":{"$t":"Miami"},"zip":{"$t":"33144"},"fax":{},"latitude":{"$t":"25.763"},"id":{"$t":"FL1504"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-80.2945"},"name":{"$t":"American
+        Bullmastiff Rescue FL"},"phone":{"$t":"305-282-3389"},"state":{"$t":"FL"},"address2":{},"email":{"$t":"mimifinlay@msn.com"},"city":{"$t":"Miami"},"zip":{"$t":"33143"},"fax":{},"latitude":{"$t":"25.7016"},"id":{"$t":"FL653"},"address1":{"$t":"6300
+        S.W. 85th Street"}},{"country":{"$t":"US"},"longitude":{"$t":"-80.2945"},"name":{"$t":"HouseRabbit
+        Adoption, Rescue, and Education, Inc. -- HARE"},"phone":{"$t":"305-666-BUNN
+        "},"state":{"$t":"FL"},"address2":{},"email":{"$t":"rabbit@bio.miami.edu"},"city":{"$t":"Miami"},"zip":{"$t":"33143"},"fax":{},"latitude":{"$t":"25.7016"},"id":{"$t":"FL1160"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-80.3605"},"name":{"$t":"Dixie
+        Animal Hospital"},"phone":{"$t":"305-238-5161"},"state":{"$t":"FL"},"address2":{},"email":{"$t":"dixieanimal@bellsouth.net"},"city":{"$t":"Miami"},"zip":{"$t":"33176"},"fax":{},"latitude":{"$t":"25.6551"},"id":{"$t":"FL866"},"address1":{"$t":"14701
+        South Dixie Highway"}},{"country":{"$t":"US"},"longitude":{"$t":"-80.3605"},"name":{"$t":"Just
+        Jacks Rescue, Inc"},"phone":{"$t":"305-761-5007"},"state":{"$t":"FL"},"address2":{},"email":{},"city":{"$t":"Miami"},"zip":{"$t":"33176"},"fax":{},"latitude":{"$t":"25.6551"},"id":{"$t":"FL881"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-80.3605"},"name":{"$t":"Big
+        Hearts for Big Dogs Rescue- Miami"},"phone":{},"state":{"$t":"FL"},"address2":{},"email":{"$t":"info@bigheartsbigdogs.com"},"city":{"$t":"Miami"},"zip":{"$t":"33176"},"fax":{},"latitude":{"$t":"25.6551"},"id":{"$t":"FL1040"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-80.406"},"name":{"$t":"Whiskers
+        & Tails Rescue"},"phone":{},"state":{"$t":"FL"},"address2":{},"email":{"$t":"whiskersandtailsrescue@hotmail.com"},"city":{"$t":"Miami"},"zip":{"$t":"33186"},"fax":{},"latitude":{"$t":"25.6654"},"id":{"$t":"FL1220"},"address1":{"$t":"13311
+        SW 88 Terrace #B"}},{"country":{"$t":"US"},"longitude":{"$t":"-80.2699"},"name":{"$t":"Buddies
+        Thru Bullies - English Bulldog Rescue"},"phone":{"$t":"305 666 8870  "},"state":{"$t":"FL"},"address2":{},"email":{"$t":"BTBrescue@gmail.com"},"city":{"$t":"Miami"},"zip":{"$t":"33134"},"fax":{},"latitude":{"$t":"25.754"},"id":{"$t":"FL54"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-80.2986"},"name":{"$t":"Miami-Dade
+        Animal Services"},"phone":{"$t":"305-418-7149"},"state":{"$t":"FL"},"address2":{},"email":{"$t":"pets@miamidade.gov"},"city":{"$t":"Miami"},"zip":{"$t":"33166"},"fax":{},"latitude":{"$t":"25.819"},"id":{"$t":"FL205"},"address1":{"$t":"7401
+        Northwest 74 Street"}},{"country":{"$t":"US"},"longitude":{"$t":"-80.2446"},"name":{"$t":"United
+        Yorkie Rescue"},"phone":{},"state":{"$t":"FL"},"address2":{},"email":{"$t":"mbslen@yahoo.com"},"city":{"$t":"Miami"},"zip":{"$t":"33133"},"fax":{},"latitude":{"$t":"25.7289"},"id":{"$t":"FL929"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-80.3165"},"name":{"$t":"Paws
+        4 You Rescue, Inc."},"phone":{"$t":"786-242-RESQ (7377)  "},"state":{"$t":"FL"},"address2":{},"email":{"$t":"info@paws4you.org"},"city":{"$t":"Miami"},"zip":{"$t":"33158"},"fax":{},"latitude":{"$t":"25.6364"},"id":{"$t":"FL712"},"address1":{"$t":"PO
+        Box 561163"}},{"country":{"$t":"US"},"longitude":{"$t":"-80.3165"},"name":{"$t":"Wheaten
+        Terrier Club of Greater Tampa Bay - Rescue"},"phone":{"$t":"305 255 2639"},"state":{"$t":"FL"},"address2":{},"email":{"$t":"wheatenrescuemia@aol.com"},"city":{"$t":"Miami"},"zip":{"$t":"33158"},"fax":{},"latitude":{"$t":"25.6364"},"id":{"$t":"FL872"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-80.2378"},"name":{"$t":"That
+        Black Dog Rescue"},"phone":{"$t":"7860000000"},"state":{"$t":"FL"},"address2":{},"email":{"$t":"thatblackdogrescue@gmail.com"},"city":{"$t":"Miami"},"zip":{"$t":"33125"},"fax":{},"latitude":{"$t":"25.7824"},"id":{"$t":"FL1480"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-80.2783"},"name":{"$t":"1
+        Lucky Dog Rescue, Inc."},"phone":{"$t":"786-486-4188  "},"state":{"$t":"FL"},"address2":{},"email":{"$t":"jessie@1luckydogrescue.com"},"city":{"$t":"Hialeah"},"zip":{"$t":"33017"},"fax":{},"latitude":{"$t":"25.8572"},"id":{"$t":"FL822"},"address1":{"$t":"P.O.
+        Box 171425"}},{"country":{"$t":"US"},"longitude":{"$t":"-80.2714"},"name":{"$t":"Luna''s
+        Paws, Corp."},"phone":{"$t":"7867089738"},"state":{"$t":"FL"},"address2":{},"email":{"$t":"lunaspawsrescue@gmail.com"},"city":{"$t":"Hialeah"},"zip":{"$t":"33013"},"fax":{},"latitude":{"$t":"25.8571"},"id":{"$t":"FL1434"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-80.1939"},"name":{"$t":"Community
+        Pet Rescue"},"phone":{"$t":"305-889-0840"},"state":{"$t":"FL"},"address2":{},"email":{"$t":"laney714@bellsouth.net"},"city":{"$t":"Miami
+        Springs"},"zip":{"$t":"33266"},"fax":{},"latitude":{"$t":"25.7739"},"id":{"$t":"FL404"},"address1":{"$t":"PO
+        Box 661160"}},{"country":{"$t":"US"},"longitude":{"$t":"-80.1939"},"name":{"$t":"The
+        Cat Network Inc."},"phone":{"$t":"(305) 255-3482"},"state":{"$t":"FL"},"address2":{"$t":"FL,
+        33234-7228"},"email":{"$t":"info@thecatnetwork.org"},"city":{"$t":"Miami"},"zip":{"$t":"33159"},"fax":{},"latitude":{"$t":"25.7739"},"id":{"$t":"FL62"},"address1":{"$t":"P.O.
+        Box 347228"}},{"country":{"$t":"US"},"longitude":{"$t":"-80.1939"},"name":{"$t":"Jamies
+        Rescue"},"phone":{"$t":"305-409-8442"},"state":{"$t":"FL"},"address2":{},"email":{"$t":"jamiesrescue@gmail.com"},"city":{"$t":"Miami"},"zip":{"$t":"33153"},"fax":{},"latitude":{"$t":"25.7739"},"id":{"$t":"FL806"},"address1":{"$t":"PO
+        Box 530184"}},{"country":{"$t":"US"},"longitude":{"$t":"-80.1939"},"name":{"$t":"Miami
+        Pet Assistance Coalition (MPAC)"},"phone":{},"state":{"$t":"FL"},"address2":{},"email":{"$t":"mpac.adoptions@gmail.com"},"city":{"$t":"Miami"},"zip":{"$t":"33238"},"fax":{},"latitude":{"$t":"25.7739"},"id":{"$t":"FL1259"},"address1":{"$t":"P.O.
+        Box 380314"}},{"country":{"$t":"US"},"longitude":{"$t":"-80.1939"},"name":{"$t":"Little
+        Tails Rescue, Inc."},"phone":{},"state":{"$t":"FL"},"address2":{},"email":{"$t":"littletailsrescueinc@gmail.com"},"city":{"$t":"Miami"},"zip":{"$t":"33265"},"fax":{},"latitude":{"$t":"25.7739"},"id":{"$t":"FL1425"},"address1":{"$t":"P.O
+        Box 652336"}},{"country":{"$t":"US"},"longitude":{"$t":"-80.2039"},"name":{"$t":"Operation
+        PAW"},"phone":{"$t":"3054073736  "},"state":{"$t":"FL"},"address2":{},"email":{"$t":"adopt@operationpaw.com"},"city":{"$t":"Miami"},"zip":{"$t":"33127"},"fax":{},"latitude":{"$t":"25.8116"},"id":{"$t":"FL1335"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-80.1897"},"name":{"$t":"Fur
+        Angels Rescue"},"phone":{"$t":"786 368-8005 "},"state":{"$t":"FL"},"address2":{},"email":{"$t":"furangelsrescue@gmail.com"},"city":{"$t":"Miami"},"zip":{"$t":"33137"},"fax":{},"latitude":{"$t":"25.8137"},"id":{"$t":"FL890"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-80.3084"},"name":{"$t":"GST''s
+        Sun State Greyhound Adoption"},"phone":{"$t":"(813) 263-3427"},"state":{"$t":"FL"},"address2":{},"email":{"$t":"sunstategreyhounds@gmail.com"},"city":{"$t":"Hialeah"},"zip":{"$t":"33014"},"fax":{},"latitude":{"$t":"25.9045"},"id":{"$t":"FL1354"},"address1":{}}]},"header":{"timestamp":{"$t":"2017-09-25T03:16:00Z"},"status":{"message":{},"code":{"$t":"100"}},"version":{"$t":"0.1"}},"@xsi:noNamespaceSchemaLocation":"http://api.petfinder.com/schemas/0.9/petfinder.xsd"}}'
+    http_version: 
+  recorded_at: Mon, 25 Sep 2017 03:16:02 GMT
+recorded_with: VCR 3.0.3

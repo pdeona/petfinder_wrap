@@ -111,7 +111,29 @@ RSpec.describe Petfinder::Client do
         expect(shelter).to be_a Petfinder::Shelter
       end
     end
+
+    context "Client#find_shelters" do
+      let :shelters do
+        VCR.use_cassette('petfinder/find_shelters') do
+          shelters = c.find_shelters "33165"
+        end
+      end
+
+      it "allows a user to search for shelters by zip code" do
+        expect{ shelters }.not_to raise_error
+      end
+
+      it "successfully retrieves a response from the API" do
+        expect(shelters).not_to be nil
+      end
+
+      it "successfully parses the response into an array of Shelter objects" do
+        expect(shelters.first).to be_a Petfinder::Shelter
+        expect(shelters.last).to be_a Petfinder::Shelter
+      end
+    end
   end
+
 
   describe Petfinder::Pet do
     context "initialize" do

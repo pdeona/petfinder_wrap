@@ -22,14 +22,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+If you are using in a rails app, place the following into your config/application.rb:
 
-## Development
+```ruby
+      Petfinder.configure do |config|
+        config.api_key = "YOUR API KEY HERE"
+        config.api_secret = "YOUR API SECRET HERE"
+      end
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Afterward, you should be able to use
+```ruby
+client = Petfinder::Client.new
+client.find_pets("dog", "33165") # => an array of Pets
+client.find_pet("38747365") # => returns a single Pet
+client.find_shelters
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/petfinder-wrap.
+Bug reports and pull requests are welcome on GitHub at https://github.com/pdeona/petfinder-wrap.
