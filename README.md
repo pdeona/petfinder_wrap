@@ -46,6 +46,7 @@ Additionally, try methods like
 pet = client.find_pet("38747365")
 pet.name # => returns the pet's name
 pet.contact # => returns a hash of contact info
+pet.photos # => returns an array of Photo objects, with multiple size urls accessible by .small, .medium, .large, .thumbnail, .tiny
 ```
 the same should function for shelters.
 
