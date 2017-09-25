@@ -163,12 +163,14 @@ RSpec.describe Petfinder::Client do
     end
 
     context "#contact" do
-      let :pet_contact do
-        pet.contact
+      let :pet do
+        VCR.use_cassette('petfinder/find_pet') do
+          pet = Petfinder::Client.new.find_pet 38747365
+        end
       end
 
       it "returns a hash of contact info" do
-        expect(pet_contact).to be_a Hash
+        expect(pet.contact_info).to be_a Hash
       end
     end
 

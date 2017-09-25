@@ -6,12 +6,10 @@ module Petfinder
     json_attributes "name", "breed", "age", "size", "id", "shelter_id",
                     "description", "shelter_id"
 
-    attr_reader :contact, :attributes
+    attr_reader :attributes, :contact_info
     def initialize pet_hash
       @attributes = pet_hash
-    end
-
-    def contact
+      @contact_info = contact
     end
 
     def photos
@@ -20,6 +18,13 @@ module Petfinder
     end
 
     private
+
+    def contact
+      class << self
+        json_attributes "phone", "state", "email", "city",
+                        "zip", "fax", "address1"
+      end
+    end
 
     def parse_photos
       @photos = []
