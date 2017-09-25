@@ -234,7 +234,23 @@ RSpec.describe Petfinder::Client do
         end
 
         it "method returns image url for small photo" do
-          expect(photo.small).to eq(photos.first.small)
+          photo_small = "http://photos.petfinder.com/photos/pets/38747365/1/?bust=1499922306&width=95&-fpm.jpg"
+          expect(photo.small).to eq(photo_small)
+        end
+
+        it "method returns image url for medium photo" do
+          photo_medium = "http://photos.petfinder.com/photos/pets/38747365/1/?bust=1499922306&width=300&-pn.jpg"
+          expect(photo.medium).to eq(photo_medium)
+        end
+
+        it "method returns image url for large photo" do
+          photo_large = "http://photos.petfinder.com/photos/pets/38747365/1/?bust=1499922306&width=500&-x.jpg"
+          expect(photo.large).to eq(photo_large)
+        end
+
+        it "method returns image url for tiny photo" do
+          photo_tiny = "http://photos.petfinder.com/photos/pets/38747365/1/?bust=1499922306&width=60&-pnt.jpg"
+          expect(photo.tiny).to eq(photo_tiny)
         end
       end
     end
