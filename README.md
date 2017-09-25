@@ -46,10 +46,11 @@ Additionally, try methods like
 pet = client.find_pet("38747365")
 pet.name # => returns the pet's name
 pet.photos # => returns an array of Photo objects, with multiple size urls accessible by .small, .medium, .large, .thumbnail, .tiny
-pet.phone
-pet.address1
-pet.city
-pet.zip
+pet.contact_info # => returns a hash of callable method names for contact info
+pet.phone # => returns the phone # associated with this pet
+pet.address1 # => returns the address associated with this pet
+pet.city # => returns the city
+pet.zip # => returns the postal code
 ```
 the same should function for shelters.
 
