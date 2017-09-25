@@ -55,7 +55,6 @@ module Petfinder
     end
 
     class Photo
-      extend JsonMapper
 
       attr_accessor :large, :medium, :small, :thumbnail, :tiny
       attr_reader :attributes, :id
@@ -64,6 +63,7 @@ module Petfinder
         @attributes = attributes
         @id = attributes["@id"]
       end
+
     end
 
   end
