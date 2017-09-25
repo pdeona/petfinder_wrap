@@ -13,7 +13,7 @@ RSpec.describe Petfinder::Client do
 
   context "initialize" do
     it "won't initialize without an API key" do
-      expect { Client.new }.to raise_error
+      expect { Petfinder::Client.new }.to raise_error(Petfinder::Error)
     end
   end
 
@@ -141,7 +141,7 @@ RSpec.describe Petfinder::Client do
 
 
   describe Petfinder::Pet do
-    context "initialize" do
+    context "#initialize" do
 
       let :pet do
         VCR.use_cassette('petfinder/find_pet') do
@@ -153,8 +153,36 @@ RSpec.describe Petfinder::Client do
         expect(pet).to be_a Petfinder::Pet
       end
 
-      it "has attribute reader methods" do
+      it "the object has attribute reader methods" do
         expect{ pet.name }.not_to raise_error
+      end
+
+      it "the object has a photos method" do
+        expect{ pet.photos }.not_to raise_error
+      end
+    end
+
+    context "#photos" do
+      let :photos do
+        VCR.use_cassette('petfinder/find_pet') do
+          pet = Petfinder::Client.new.find_pet 38747365
+          photos = pet.photos
+        end
+      end
+
+      it "returns an array" do
+        expect(photos).to be_a Array
+      end
+
+      it "the array contains Photo objects" do
+        expect(photos.first).to be_a Petfinder::Pet::Photo
+        expect(photos.last).to be_a Petfinder::Pet::Photo
+      end
+
+      describe Petfinder::Pet::Photo do
+        it "has an id reader method"
+        it "has methods for .large, .small, .medium, .thumbnail, .tiny"
+        it "methods return image url strings"
       end
     end
   end
