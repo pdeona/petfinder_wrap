@@ -41,9 +41,7 @@ RSpec.describe Petfinder::Client do
   context "initialize" do
 
     let :c {
-      Petfinder.api_key = "31644babd91732885c1b7962a39b02bd"
-      Petfinder.api_secret = "3d72e8837e2db4cb644a60b063905724"
-      c = Client.new
+      c = Petfinder::Client.new
     }
 
     it "creates a Client object on initialize" do
@@ -89,8 +87,8 @@ RSpec.describe Petfinder::Client do
       end
 
       it "retrieves an array of Pet objects" do
-        expect(pets.first).to be_a Pet
-        expect(pets.last).to be_a Pet
+        expect(pets.first).to be_a Petfinder::Pet
+        expect(pets.last).to be_a Petfinder::Pet
       end
 
       it "allows user to view individual Pet objects" do
@@ -120,12 +118,12 @@ RSpec.describe Petfinder::Client do
 
       let :pet do
         VCR.use_cassette('petfinder/find_pet') do
-          pet = Client.new.find_pet 38747365
+          pet = Petfinder::Client.new.find_pet 38747365
         end
       end
 
       it "creates a pet object" do
-        expect(pet).to be_a Pet
+        expect(pet).to be_a Petfinder::Pet
       end
 
       it "has attribute reader methods" do
@@ -138,12 +136,12 @@ RSpec.describe Petfinder::Client do
     context "initialize" do
       let :shelter do
         VCR.use_cassette("petfinder/get_shelter") do
-          shelter = Client.new.get_shelter "FL54"
+          shelter = Petfinder::Client.new.get_shelter "FL54"
         end
       end
 
       it "creates a shelter object" do
-        expect(shelter).to be_a Shelter
+        expect(shelter).to be_a Petfinder::Shelter
       end
 
       it "has attribute reader methods" do
@@ -160,13 +158,13 @@ RSpec.describe Petfinder::Client do
 
         let :shelter_pets do
           VCR.use_cassette('petfinder/shelter_get_pets') do
-            shelter = Client.new.get_shelter "FL54"
+            shelter = Petfinder::Client.new.get_shelter "FL54"
             shelter_pets = shelter.get_pets
           end
         end
 
         it "returns an Array of Pet objects" do
-          expect(shelter_pets.first).to be_a Pet
+          expect(shelter_pets.first).to be_a Petfinder::Pet
         end
       end
     end

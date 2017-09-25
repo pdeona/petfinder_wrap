@@ -1,17 +1,17 @@
 module Petfinder
 
-
   class Pet
-    attr_reader :contact, :name, :breed, :age, :size, :id, :shelter_id, :media
+    extend JsonMapper
+
+    json_attributes "name", "breed", "age", "size", "id", "shelter_id",
+                    "description", "shelter_id"
+
+    attr_reader :media, :contact
     def initialize pet_hash
-      @contact = pet_hash["contact"]
-      @name = pet_hash["name"]["$t"]
-      @breed = pet_hash["breed"]
-      @age = pet_hash["age"]
-      @size = pet_hash["size"]
-      @id = pet_hash["id"]
-      @shelter_id = pet_hash["shelterPetId"]
-      @media = pet_hash["media"]
+      @attributes = pet_hash
+    end
+
+    def contact
     end
   end
 end
