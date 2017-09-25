@@ -169,9 +169,16 @@ RSpec.describe Petfinder::Client do
         end
       end
 
-      it "returns a hash of contact info" do
-        expect(pet.contact_info).to be_a Hash
+      it "returns an array of names" do
+        expect(pet.contact_info).to be_a Array
       end
+
+      it "each name in the array corresponds to a method" do
+        pet.contact_info.each do |name|
+          expect(pet.methods).to include name.to_sym
+        end
+      end
+
     end
 
     context "#photos" do

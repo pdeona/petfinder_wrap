@@ -11,6 +11,8 @@ module Petfinder
           @attributes.dig(camelName, "$t")
         elsif @attributes.dig(name, "$t")
           @attributes.dig(name, "$t")
+        elsif @attributes.dig("contact", name, "$t")
+          @attributes.dig("contact", name, "$t")
         else
           @attributes["#{name}"]
         end
