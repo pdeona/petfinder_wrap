@@ -137,6 +137,28 @@ RSpec.describe Petfinder::Client do
         expect(shelters.last).to be_a Petfinder::Shelter
       end
     end
+
+    context "Client#breeds" do
+      let :breeds do
+        VCR.use_cassette('petfinder/list_breeds') do
+          c = Petfinder::Client.new
+          breeds = c.breeds "dog"
+        end
+      end
+
+      it "sends an api request" do
+        expect{ breeds }.not_to raise_error
+      end
+
+      it "receives a JSON response" do
+        expect{ breeds.to_json }.not_to raise_error
+      end
+
+      it "gets a list of breeds available for an animal class" do
+        expect(breeds.first).to be_a Petfinder::Breed
+        expect(breeds.last).to be_a Petfinder::Breed
+      end
+    end
   end
 
 

@@ -3,6 +3,7 @@ require_relative 'petfinder/json-mapper'
 require_relative 'petfinder/pet'
 require_relative 'petfinder/shelter'
 require_relative 'petfinder/client'
+require_relative 'petfinder/breed'
 require 'open-uri'
 
 module Petfinder

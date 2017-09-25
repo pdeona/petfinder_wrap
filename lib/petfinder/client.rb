@@ -58,8 +58,16 @@ module Petfinder
       res
     end
 
+    def breeds animal
+      list_breeds_request = API_BASE_URI + "breed.list?key=#{@api_key}&animal=#{animal}&format=json"
+      response = open(list_breeds_request).read
+      res = []
+      if resp = JSON.parse(response)
+        resp["petfinder"]["breeds"]["breed"].each do |breed|
+          res << Petfinder::Breed.new(breed, resp["petfinder"]["breeds"]["@animal"])
+        end
+      end
+      res
+    end
   end
-
-  private
-
 end
