@@ -6,7 +6,7 @@ require_relative 'petfinder/client'
 require 'open-uri'
 
 module Petfinder
-  VERSION = "1.0.0"
+  VERSION = "1.0.1"
 
   class Error < StandardError; end
 

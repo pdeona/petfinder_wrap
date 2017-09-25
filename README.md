@@ -34,10 +34,21 @@ If you are using in a rails app, place the following into your config/applicatio
 Afterward, you should be able to use
 ```ruby
 client = Petfinder::Client.new
-client.find_pets("dog", "33165") # => an array of Pets
+client.find_pets("dog", "33165") # => returns an array of Pets
 client.find_pet("38747365") # => returns a single Pet
-client.find_shelters
+client.find_shelters("33131") # => returns an array of Shelters
+client.get_shelter("FL54") # => returns a single Shelter object
+```
 
+Additionally, try methods like
+```ruby
+pet = client.find_pet("38747365")
+pet.name # => returns the pet's name
+pet.contact # => returns a hash of contact info
+```
+the same should function for shelters.
+
+Please see below for bug reporting and pull requests.
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/pdeona/petfinder-wrap.
