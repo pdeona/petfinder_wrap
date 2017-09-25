@@ -6,7 +6,7 @@ module Petfinder
     json_attributes "name", "breed", "age", "size", "id", "shelter_id",
                     "description", "shelter_id"
 
-    attr_reader :media, :contact
+    attr_reader :contact, :attributes
     def initialize pet_hash
       @attributes = pet_hash
     end
@@ -24,14 +24,13 @@ module Petfinder
     def parse_photos
       @photos = []
       @attributes["media"]["photos"]["photo"].each do |photo|
-        add_photo photo, photo["@id"]
+        add_photo photo, photo["$t"]
       end
     end
 
-    def add_photo photo, id
-      photo = set_photo photo, id
-      url = photo.attributes["$t"]
-      size = photo.attributes["@size"]
+    def add_photo photo, url
+      size = photo["@size"]
+      photo = set_photo photo
       case size
       when "x"
         photo.large = url
@@ -42,12 +41,12 @@ module Petfinder
       when "pnt"
         photo.tiny = url
       end
-      @photos << photo unless @photos.include? photo
+      @photos << photo unless @photos.find_index photo
     end
 
-    def set_photo photo, id
+    def set_photo photo
       @photos.each do |existing_photo|
-        if id == existing_photo.id
+        if photo["@id"] == existing_photo.id
           return existing_photo
         end
       end
@@ -57,7 +56,7 @@ module Petfinder
     class Photo
 
       attr_accessor :large, :medium, :small, :thumbnail, :tiny
-      attr_reader :attributes, :id
+      attr_reader :id, :attributes
 
       def initialize attributes
         @attributes = attributes

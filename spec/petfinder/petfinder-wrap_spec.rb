@@ -180,9 +180,43 @@ RSpec.describe Petfinder::Client do
       end
 
       describe Petfinder::Pet::Photo do
-        it "has an id reader method"
-        it "has methods for .large, .small, .medium, .thumbnail, .tiny"
-        it "methods return image url strings"
+        let :photo do
+          photo = photos.first
+        end
+
+        let :photo_size_run do
+          photo = photos.first
+          photo.large = "test"
+          photo.small = "test"
+          photo.medium = "test"
+          photo.thumbnail = "test"
+          photo.tiny = "test"
+          photo
+        end
+
+        it "has an id reader method" do
+          expect{ photo.id }.not_to raise_error
+        end
+
+        it "has getter methods for .large, .small, .medium, .thumbnail, .tiny" do
+          expect{ photo.large }.not_to raise_error
+          expect{ photo.small }.not_to raise_error
+          expect{ photo.medium }.not_to raise_error
+          expect{ photo.tiny }.not_to raise_error
+          expect{ photo.thumbnail }.not_to raise_error
+        end
+
+        it "has setter methods for .large, .small, .medium, .thumbnail, .tiny" do
+          expect(photo_size_run.tiny).to eq("test")
+          expect(photo_size_run.small).to eq("test")
+          expect(photo_size_run.medium).to eq("test")
+          expect(photo_size_run.thumbnail).to eq("test")
+          expect(photo_size_run.large).to eq("test")
+        end
+
+        it "method returns image url for small photo" do
+          expect(photo.small).to eq(photos.first.small)
+        end
       end
     end
   end
