@@ -1,8 +1,8 @@
 # Petfinder::Wrap
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/petfinder/wrap`. To experiment with that code, run `bin/console` for an interactive prompt.
+A simple gem for the Petfinder API using JSON responses and a traversal method.
 
-TODO: Delete this and the text above, and describe your gem
+TODO: build out <#Pet>.photos instance methods for max usability in rails apps.
 
 ## Installation
 
@@ -30,6 +30,7 @@ If you are using in a rails app, place the following into your config/applicatio
         config.api_secret = "YOUR API SECRET HERE"
       end
 ```
+note: Currently, the API does not utilize a client secret for any requests. You are probably better off not setting this value in your code. In the future if they add PUT, POST, DELETE endpoints that require auth, the above config will work, if someone wants to build out those methods.
 
 Afterward, you should be able to use
 ```ruby
