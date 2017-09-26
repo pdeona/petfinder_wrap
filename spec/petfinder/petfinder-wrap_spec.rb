@@ -45,25 +45,25 @@ RSpec.describe Petfinder::Client do
 
   context "initialize" do
 
-    let :c {
-      c = Petfinder::Client.new
-    }
+    let :client do
+      client = Petfinder::Client.new
+    end
 
     it "creates a Client object on initialize" do
-      expect(c).not_to be nil
+      expect(client).not_to be nil
     end
 
     it "stores api_key in an instance variable" do
-      expect(c.api_key).to eq Petfinder.api_key
+      expect(client.api_key).to eq Petfinder.api_key
     end
 
     it "stores api_secret in an instance variable" do
-      expect(c.api_secret).to eq Petfinder.api_secret
+      expect(client.api_secret).to eq Petfinder.api_secret
     end
 
     context "Client#findPet" do
       let :get_a_pet do
-        c.find_pet(38747365)
+        client.find_pet(38747365)
       end
 
       it "sends request to the api" do
@@ -81,7 +81,7 @@ RSpec.describe Petfinder::Client do
 
       it "rescues invalid responses" do
         VCR.use_cassette('petfinder/find_invalid') do
-          expect{ c.find_pet 123 }.not_to raise_error
+          expect{ client.find_pet 123 }.not_to raise_error
         end
       end
     end
@@ -89,7 +89,7 @@ RSpec.describe Petfinder::Client do
     context "Client#getPets" do
       let :pets do
         VCR.use_cassette('petfinder/find_pets') do
-          pets = c.find_pets "dog", "33165"
+          pets = client.find_pets "dog", "33165"
         end
       end
 
@@ -98,8 +98,9 @@ RSpec.describe Petfinder::Client do
       end
 
       it "retrieves an array of Pet objects" do
-        expect(pets.first).to be_a Petfinder::Pet
-        expect(pets.last).to be_a Petfinder::Pet
+        pets.each do |pet|
+          expect(pet).to be_a Petfinder::Pet
+        end
       end
 
       it "allows user to view individual Pet objects" do
@@ -108,7 +109,7 @@ RSpec.describe Petfinder::Client do
 
       it "rescues invalid responses" do
         VCR.use_cassette('petfinder/find_pets_invalid') do
-          expect{ c.find_pets "doggo", "bamboozled" }.not_to raise_error
+          expect{ client.find_pets "doggo", "bamboozled" }.not_to raise_error
         end
       end
     end
@@ -116,7 +117,7 @@ RSpec.describe Petfinder::Client do
     context "Client#getShelter" do
       let :shelter do
         VCR.use_cassette('petfinder/get_shelter') do
-          shelter = c.get_shelter "FL54"
+          shelter = client.get_shelter "FL54"
         end
       end
 
@@ -130,7 +131,7 @@ RSpec.describe Petfinder::Client do
 
       it "rescues invalid responses" do
         VCR.use_cassette('petfinder/find_invalid_shelter') do
-          expect{ c.get_shelter 123 }.not_to raise_error
+          expect{ client.get_shelter 123 }.not_to raise_error
         end
       end
     end
@@ -138,7 +139,7 @@ RSpec.describe Petfinder::Client do
     context "Client#find_shelters" do
       let :shelters do
         VCR.use_cassette('petfinder/find_shelters') do
-          shelters = c.find_shelters "33165"
+          shelters = client.find_shelters "33165"
         end
       end
 
@@ -151,13 +152,14 @@ RSpec.describe Petfinder::Client do
       end
 
       it "successfully parses the response into an array of Shelter objects" do
-        expect(shelters.first).to be_a Petfinder::Shelter
-        expect(shelters.last).to be_a Petfinder::Shelter
+        shelters.each do |shelter|
+          expect(shelter).to be_a Petfinder::Shelter
+        end
       end
 
       it "rescues invalid responses" do
         VCR.use_cassette('petfinder/find_invalid_shelters') do
-          expect{ c.find_shelters 123 }.not_to raise_error
+          expect{ client.find_shelters 123 }.not_to raise_error
         end
       end
     end
@@ -166,7 +168,7 @@ RSpec.describe Petfinder::Client do
       let :breeds do
         VCR.use_cassette('petfinder/list_breeds') do
           c = Petfinder::Client.new
-          breeds = c.breeds "dog"
+          breeds = client.breeds "dog"
         end
       end
 
@@ -179,13 +181,14 @@ RSpec.describe Petfinder::Client do
       end
 
       it "gets a list of breeds available for an animal class" do
-        expect(breeds.first).to be_a Petfinder::Breed
-        expect(breeds.last).to be_a Petfinder::Breed
+        breeds.each do |breed|
+          expect(breed).to be_a Petfinder::Breed
+        end
       end
 
       it "rescues invalid responses" do
         VCR.use_cassette('petfinder/find_invalid_breeds') do
-          expect{ c.breeds "alien monkey" }.not_to raise_error
+          expect{ client.breeds "alien monkey" }.not_to raise_error
         end
       end
     end
@@ -246,8 +249,9 @@ RSpec.describe Petfinder::Client do
       end
 
       it "the array contains Photo objects" do
-        expect(photos.first).to be_a Petfinder::Pet::Photo
-        expect(photos.last).to be_a Petfinder::Pet::Photo
+        photos.each do |photo|
+          expect(photo).to be_a Petfinder::Pet::Photo
+        end
       end
 
       describe Petfinder::Pet::Photo do
@@ -270,19 +274,16 @@ RSpec.describe Petfinder::Client do
         end
 
         it "has getter methods for .large, .small, .medium, .thumbnail, .tiny" do
-          expect{ photo.large }.not_to raise_error
-          expect{ photo.small }.not_to raise_error
-          expect{ photo.medium }.not_to raise_error
-          expect{ photo.tiny }.not_to raise_error
-          expect{ photo.thumbnail }.not_to raise_error
+          [:large, :small, :medium, :thumbnail, :tiny].each do |size|
+            expect{ photo.send(size) }.not_to raise_error
+          end
         end
 
         it "has setter methods for .large, .small, .medium, .thumbnail, .tiny" do
+          [:large, :small, :medium, :thumbnail, :tiny].each do |size|
+            expect(photo_size_run.send(size)).to eq("test")
+          end
           expect(photo_size_run.tiny).to eq("test")
-          expect(photo_size_run.small).to eq("test")
-          expect(photo_size_run.medium).to eq("test")
-          expect(photo_size_run.thumbnail).to eq("test")
-          expect(photo_size_run.large).to eq("test")
         end
 
         it "method returns image url for small photo" do

@@ -2,7 +2,10 @@
 
 A simple gem for the Petfinder API using JSON responses and a traversal method.
 
-TODO: build out Breed.search instance methods for specific searches.
+Coming in the next release:
+
+* Options hashes (you rubes love options hashes)
+* <#Breed>.search_by instance method
 
 ## Installation
 
@@ -16,34 +19,44 @@ And then execute:
 
     $ bundle
 
+OR:
+```
+    $ bundle add petfinder-wrap
+    $ bundle install
+```
+to automatically add it to your Gemfile and install it.
+
 Or install it yourself as:
 
     $ gem install petfinder-wrap
 
 ## Usage
 
-If you are using in a rails app, place the following into your config/application.rb:
+If you are using in a rails app, place the following
+into config/initializers/petfinder.rb:
 
 ```ruby
       Petfinder.configure do |config|
         config.api_key = "YOUR API KEY HERE"
-        config.api_secret = "YOUR API SECRET HERE"
+        config.api_secret = "YOUR API SECRET HERE" # not needed yet, do not use
       end
 ```
+
 note: Currently, the API does not utilize a client secret for any requests. You are probably better off not setting this value in your code. In the future if they add PUT, POST, DELETE endpoints that require auth, the above config will work, if someone wants to build out those methods.
 
 Afterward, you should be able to use
 ```ruby
 client = Petfinder::Client.new
-client.find_pets("dog", "33165") # => returns an array of Pets
-client.find_pet("38747365") # => returns a single Pet
-client.find_shelters("33131") # => returns an array of Shelters
-client.get_shelter("FL54") # => returns a single Shelter object
+client.find_pets "dog", "33165" # => returns an array of Pets
+client.find_pet "38747365" # => returns a single Pet
+client.find_shelters "33131" # => returns an array of Shelters
+client.get_shelter "FL54" # => returns a single Shelter object
 ```
+
 
 Additionally, try methods like
 ```ruby
-pet = client.find_pet("38747365")
+pet = client.find_pet "38747365"
 pet.name # => returns the pet's name
 pet.photos # => returns an array of Photo objects, with multiple size urls accessible by .small, .medium, .large, .thumbnail, .tiny
 pet.contact_info # => returns a hash of callable method names for contact info

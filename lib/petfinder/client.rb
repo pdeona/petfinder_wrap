@@ -69,6 +69,23 @@ module Petfinder
       end
     end
 
+    def get_shelter_pets shelter
+      get_shelter_pets = API_BASE_URI + "shelter.getPets?key=#{@api_key}&id=#{shelter.id}&output=basic&format=json"
+      response = open(get_shelter_pets).read
+      res = []
+      if resp = JSON.parse(response)
+        begin
+          resp["petfinder"]["pets"]["pet"].each do |pet|
+            res << Pet.new(pet)
+          end
+        rescue NoMethodError => e
+          puts e.message
+          puts "Invalid response received from API. Check your query"
+        end
+        res
+      end
+    end
+
     def find_shelters location
       find_shelters_request = API_BASE_URI + "shelter.find?key=#{@api_key}&location=#{location}&format=json"
       response = open(find_shelters_request).read
