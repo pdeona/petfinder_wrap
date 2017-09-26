@@ -3,7 +3,7 @@ module Petfinder
   class Pet
     extend JsonMapper
 
-    json_attributes "name", "breed", "age", "size", "id", "shelter_id",
+    json_attributes "name", "breed", "age", "size", "id",
                     "description", "shelter_id"
 
     attr_reader :attributes, :contact_info

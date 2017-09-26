@@ -1,0 +1,39 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.petfinder.com/pet.get?format=json&id=123&key=31644babd91732885c1b7962a39b02bd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 26 Sep 2017 02:17:14 GMT
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '248'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"@encoding":"iso-8859-1","@version":"1.0","petfinder":{"@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance","header":{"timestamp":{"$t":"2017-09-26T02:17:14Z"},"status":{"message":{"$t":"pet
+        id 123 not found"},"code":{"$t":"201"}},"version":{"$t":"0.1"}},"@xsi:noNamespaceSchemaLocation":"http://api.petfinder.com/schemas/0.9/petfinder.xsd"}}'
+    http_version: 
+  recorded_at: Tue, 26 Sep 2017 02:17:14 GMT
+recorded_with: VCR 3.0.3

@@ -78,6 +78,12 @@ RSpec.describe Petfinder::Client do
           expect(pet).to be_a Petfinder::Pet
         end
       end
+
+      it "rescues invalid responses" do
+        VCR.use_cassette('petfinder/find_invalid') do
+          expect{ c.find_pet 123 }.not_to raise_error
+        end
+      end
     end
 
     context "Client#getPets" do
