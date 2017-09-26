@@ -2,7 +2,7 @@
 
 A simple gem for the Petfinder API using JSON responses and a traversal method.
 
-TODO: build out <#Pet>.photos instance methods for max usability in rails apps.
+TODO: build out Breed.search instance methods for specific searches.
 
 ## Installation
 
