@@ -105,6 +105,12 @@ RSpec.describe Petfinder::Client do
       it "allows user to view individual Pet objects" do
         expect(pets.first.name).not_to be nil
       end
+
+      it "rescues invalid responses" do
+        VCR.use_cassette('petfinder/find_pets_invalid') do
+          expect{ c.find_pets "doggo", "bamboozled" }.not_to raise_error
+        end
+      end
     end
 
     context "Client#getShelter" do
@@ -120,6 +126,12 @@ RSpec.describe Petfinder::Client do
 
       it "returns a single Shelter object" do
         expect(shelter).to be_a Petfinder::Shelter
+      end
+
+      it "rescues invalid responses" do
+        VCR.use_cassette('petfinder/find_invalid_shelter') do
+          expect{ c.get_shelter 123 }.not_to raise_error
+        end
       end
     end
 
@@ -142,6 +154,12 @@ RSpec.describe Petfinder::Client do
         expect(shelters.first).to be_a Petfinder::Shelter
         expect(shelters.last).to be_a Petfinder::Shelter
       end
+
+      it "rescues invalid responses" do
+        VCR.use_cassette('petfinder/find_invalid_shelters') do
+          expect{ c.find_shelters 123 }.not_to raise_error
+        end
+      end
     end
 
     context "Client#breeds" do
@@ -163,6 +181,12 @@ RSpec.describe Petfinder::Client do
       it "gets a list of breeds available for an animal class" do
         expect(breeds.first).to be_a Petfinder::Breed
         expect(breeds.last).to be_a Petfinder::Breed
+      end
+
+      it "rescues invalid responses" do
+        VCR.use_cassette('petfinder/find_invalid_breeds') do
+          expect{ c.breeds "alien monkey" }.not_to raise_error
+        end
       end
     end
   end

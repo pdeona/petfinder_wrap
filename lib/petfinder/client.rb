@@ -55,13 +55,17 @@ module Petfinder
       response = open(get_shelter_request).read
       if resp = JSON.parse(response)
         shelter = Petfinder::Shelter.new(resp["petfinder"]["shelter"])
-        if shelter.attributes.nil?
-          raise Petfinder::Error "No pets received from API. Check your query"
-        else
-          shelter
+        begin
+          if shelter.attributes.nil?
+            raise Petfinder::Error.new "No pets received from API. Check your query"
+          else
+            shelter
+          end
+        rescue Petfinder::Error => e
+          puts e.message
         end
       else
-        raise Petfinder::Error "No valid JSON response from API"
+        raise Petfinder::Error.new "No valid JSON response from API"
       end
     end
 
