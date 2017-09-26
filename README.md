@@ -44,6 +44,17 @@ into config/initializers/petfinder.rb:
 
 note: Currently, the API does not utilize a client secret for any requests. You are probably better off not setting this value in your code. In the future if they add PUT, POST, DELETE endpoints that require auth, the above config will work, if someone wants to build out those methods.
 
+For non-rails applications, add the gem to your Gemfile (see above) then:
+`your_app.rb:`
+```ruby
+      require 'petfinder-wrap'
+
+      Petfinder.configure do |config|
+        config.api_key = "YOUR API KEY HERE"
+        config.api_secret = "YOUR API SECRET HERE" # not needed yet, do not use
+      end
+```
+
 Afterward, you should be able to use
 ```ruby
 client = Petfinder::Client.new
