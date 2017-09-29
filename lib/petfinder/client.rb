@@ -83,8 +83,10 @@ module Petfinder
     end
 
     def list_shelters_by_breed breed
+      breed_name = breed.name.split(" ").join
+      # breed_name.capitalize!
       list_shelters_by_breed_request = API_BASE_URI + \
-                    "shelter.listByBreed?key=#{@api_key}&animal=#{breed.animal}&breed=#{breed.name}&format=json"
+                    "shelter.listByBreed?key=#{@api_key}&animal=#{breed.animal}&breed=#{breed_name}&format=json"
       response = open(list_shelters_by_breed_request).read
       res = []
       if resp = JSON.parse(response)

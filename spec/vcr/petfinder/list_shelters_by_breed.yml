@@ -21,13 +21,13 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 29 Sep 2017 22:38:50 GMT
+      - Fri, 29 Sep 2017 23:48:05 GMT
       Vary:
       - Accept-Encoding
       X-Frame-Options:
       - SAMEORIGIN
-      Content-Length:
-      - '2414'
+      Transfer-Encoding:
+      - chunked
       Connection:
       - keep-alive
     body:
@@ -86,7 +86,7 @@ http_interactions:
         Rescue, MN"},"phone":{"$t":"952-929-0777"},"state":{"$t":"MN"},"address2":{},"email":{"$t":"lacey@underdogrescuemn.com"},"city":{"$t":"Saint
         Louis Park"},"zip":{"$t":"55416"},"fax":{},"latitude":{"$t":"44.9474"},"id":{"$t":"MN49"},"address1":{"$t":"PO
         Box 16453"}},{"country":{"$t":"US"},"longitude":{"$t":"-90.1896"},"name":{"$t":"American
-        Brussels Griffon Rescue Alliance"},"phone":{"$t":"909-797-0777"},"state":{"$t":"MS"},"address2":{},"email":{"$t":"affengriffonrescue@gmail.com"},"city":{"$t":"Jackson"},"zip":{"$t":"39201"},"fax":{},"latitude":{"$t":"32.2932"},"id":{"$t":"MS113"},"address1":{}}]},"header":{"timestamp":{"$t":"2017-09-29T22:38:50Z"},"status":{"message":{},"code":{"$t":"100"}},"version":{"$t":"0.1"}},"@xsi:noNamespaceSchemaLocation":"http://api.petfinder.com/schemas/0.9/petfinder.xsd"}}'
+        Brussels Griffon Rescue Alliance"},"phone":{"$t":"909-797-0777"},"state":{"$t":"MS"},"address2":{},"email":{"$t":"affengriffonrescue@gmail.com"},"city":{"$t":"Jackson"},"zip":{"$t":"39201"},"fax":{},"latitude":{"$t":"32.2932"},"id":{"$t":"MS113"},"address1":{}}]},"header":{"timestamp":{"$t":"2017-09-29T23:48:05Z"},"status":{"message":{},"code":{"$t":"100"}},"version":{"$t":"0.1"}},"@xsi:noNamespaceSchemaLocation":"http://api.petfinder.com/schemas/0.9/petfinder.xsd"}}'
     http_version: 
-  recorded_at: Fri, 29 Sep 2017 22:38:50 GMT
+  recorded_at: Fri, 29 Sep 2017 23:48:05 GMT
 recorded_with: VCR 3.0.3

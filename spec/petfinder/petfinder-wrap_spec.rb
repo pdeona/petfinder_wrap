@@ -262,7 +262,6 @@ RSpec.describe Petfinder::Client do
           expect(pet.methods).to include name.to_sym
         end
       end
-
     end
 
     context "#photos" do
@@ -333,6 +332,35 @@ RSpec.describe Petfinder::Client do
         it "method returns image url for tiny photo" do
           photo_tiny = "http://photos.petfinder.com/photos/pets/38747365/1/?bust=1499922306&width=60&-pnt.jpg"
           expect(photo.tiny).to eq(photo_tiny)
+        end
+      end
+    end
+
+    context "#breed" do
+
+      let :pet do
+        VCR.use_cassette('petfinder/find_pet') do
+          pet = Petfinder::Client.new.find_pet 38747365
+        end
+      end
+
+      let :pet_breed do
+        pet_breed = pet.breed
+      end
+
+      it "returns a breed object matching the corresponding pet" do
+        expect(pet_breed).to be_a Petfinder::Breed
+        expect{ pet_breed.name }.not_to raise_error
+        expect{ pet_breed.animal }.not_to raise_error
+      end
+
+      it "returns a breed object that can be passed to client#list_shelters_by_breed" do
+        VCR.use_cassette('petfinder/search_shelters_by_pet_breed') do
+          client = Petfinder::Client.new
+          response = client.list_shelters_by_breed(pet_breed)
+          response.each do |shelter|
+            expect(shelter).to be_a Petfinder::Shelter
+          end
         end
       end
     end

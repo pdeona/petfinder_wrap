@@ -3,7 +3,7 @@ module Petfinder
   class Pet
     extend JsonMapper
 
-    json_attributes "name", "breed", "age", "size", "id",
+    json_attributes "name", "age", "size", "id",
                     "description", "shelter_id"
 
     attr_reader :attributes, :contact_info
@@ -15,6 +15,14 @@ module Petfinder
     def photos
       parse_photos if @photos.nil?
       @photos
+    end
+
+    def breed
+      breed = @attributes.dig("breeds", "breed")
+      animal = @attributes.dig("animal", "$t")
+      pet_breed = Petfinder::Breed.new breed
+      pet_breed.animal = animal
+      pet_breed
     end
 
     private
