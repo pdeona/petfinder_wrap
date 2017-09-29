@@ -214,7 +214,8 @@ RSpec.describe Petfinder::Client do
 
         it "rescues invalid responses" do
           VCR.use_cassette('petfinder/find_invalid_shelters_by_breed') do
-            fake_breed = Petfinder::Breed.new "chupacabra", "goat-eating_beast"
+            fake_breed = Petfinder::Breed.new({"$t" => "chupacabra"})
+            fake_breed.animal = "goat-eating_beast"
             expect{ client.list_shelters_by_breed(fake_breed) }.not_to raise_error
           end
         end
