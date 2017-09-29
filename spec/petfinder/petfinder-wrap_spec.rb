@@ -61,7 +61,7 @@ RSpec.describe Petfinder::Client do
       expect(client.api_secret).to eq Petfinder.api_secret
     end
 
-    context "Client#findPet" do
+    context "#findPet" do
       let :get_a_pet do
         client.find_pet(38747365)
       end
@@ -86,7 +86,7 @@ RSpec.describe Petfinder::Client do
       end
     end
 
-    context "Client#getPets" do
+    context "#getPets" do
       let :pets do
         VCR.use_cassette('petfinder/find_pets') do
           pets = client.find_pets "dog", "33165"
@@ -114,7 +114,7 @@ RSpec.describe Petfinder::Client do
       end
     end
 
-    context "Client#getShelter" do
+    context "#getShelter" do
       let :shelter do
         VCR.use_cassette('petfinder/get_shelter') do
           shelter = client.get_shelter "FL54"
@@ -136,7 +136,7 @@ RSpec.describe Petfinder::Client do
       end
     end
 
-    context "Client#find_shelters" do
+    context "#find_shelters" do
       let :shelters do
         VCR.use_cassette('petfinder/find_shelters') do
           shelters = client.find_shelters "33165"
@@ -164,10 +164,9 @@ RSpec.describe Petfinder::Client do
       end
     end
 
-    context "Client#breeds" do
+    context "#breeds" do
       let :breeds do
         VCR.use_cassette('petfinder/list_breeds') do
-          c = Petfinder::Client.new
           breeds = client.breeds "dog"
         end
       end
@@ -189,6 +188,35 @@ RSpec.describe Petfinder::Client do
       it "rescues invalid responses" do
         VCR.use_cassette('petfinder/find_invalid_breeds') do
           expect{ client.breeds "alien monkey" }.not_to raise_error
+        end
+      end
+
+      context "#list_shelters_by_breed" do
+        let :breed do
+          breed = breeds.first
+        end
+
+        let :breed_shelters do
+          VCR.use_cassette('petfinder/list_shelters_by_breed') do
+            breed_shelters = client.list_shelters_by_breed(breed)
+          end
+        end
+
+        it "parses an api response" do
+          expect{ breed_shelters }.not_to raise_error
+        end
+
+        it "returns a list of shelter objects" do
+          breed_shelters.each do |shelter|
+            expect(shelter).to be_a Petfinder::Shelter
+          end
+        end
+
+        it "rescues invalid responses" do
+          VCR.use_cassette('petfinder/find_invalid_shelters_by_breed') do
+            fake_breed = Petfinder::Breed.new "chupacabra", "goat-eating_beast"
+            expect{ client.list_shelters_by_breed(fake_breed) }.not_to raise_error
+          end
         end
       end
     end
@@ -343,6 +371,31 @@ RSpec.describe Petfinder::Client do
         it "returns an Array of Pet objects" do
           expect(shelter_pets.first).to be_a Petfinder::Pet
         end
+      end
+    end
+  end
+
+  describe Petfinder::Breed do
+    context 'initialize' do
+      let :shelter do
+        VCR.use_cassette("petfinder/get_shelter") do
+          shelter = Petfinder::Client.new.get_shelter "FL54"
+        end
+      end
+
+      let :breed do
+        VCR.use_cassette('petfinder/list_breeds') do
+          client = Petfinder::Client.new
+          breed = (client.breeds "dog").first
+        end
+      end
+
+      it "has a name" do
+        expect{ breed.name }.not_to raise_error
+      end
+
+      it "has an animal type" do
+        expect{ breed.animal }.not_to raise_error
       end
     end
   end

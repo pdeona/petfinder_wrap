@@ -12,8 +12,6 @@ module Petfinder
 
     def get_pets
       res = Client.new.get_shelter_pets self
-      res
     end
-
   end
 end

@@ -1,0 +1,92 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.petfinder.com/shelter.listByBreed?animal=dog&breed=Affenpinscher&format=json&key=31644babd91732885c1b7962a39b02bd
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 29 Sep 2017 22:38:50 GMT
+      Vary:
+      - Accept-Encoding
+      X-Frame-Options:
+      - SAMEORIGIN
+      Content-Length:
+      - '2414'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"@encoding":"iso-8859-1","@version":"1.0","petfinder":{"@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance","shelters":{"shelter":[{"country":{"$t":"US"},"longitude":{"$t":"-95.5205"},"name":{"$t":"National
+        Brussels Griffon Rescue, Inc."},"phone":{},"state":{"$t":"TX"},"address2":{},"email":{"$t":"nbgrtexas@yahoo.com"},"city":{"$t":"Houston"},"zip":{"$t":"77024"},"fax":{},"latitude":{"$t":"29.7692"},"id":{"$t":"TX1278"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-90.6996"},"name":{"$t":"NEA
+        Humane Society"},"phone":{"$t":"(870) 932/5185"},"state":{"$t":"AR"},"address2":{},"email":{"$t":"margaret@neahs.org"},"city":{"$t":"Jonesboro"},"zip":{"$t":"72401"},"fax":{},"latitude":{"$t":"35.8213"},"id":{"$t":"AR128"},"address1":{"$t":"6111
+        Highland Drive"}},{"country":{"$t":"US"},"longitude":{"$t":"-92.4622"},"name":{"$t":"Humane
+        Society of Pulaski County"},"phone":{"$t":"(501) 227-6166"},"state":{"$t":"AR"},"address2":{},"email":{"$t":"info@warmhearts.org"},"city":{"$t":"Little
+        Rock"},"zip":{"$t":"72210"},"fax":{},"latitude":{"$t":"34.7015"},"id":{"$t":"AR51"},"address1":{"$t":"14600
+        Colonel Glenn Road"}},{"country":{"$t":"US"},"longitude":{"$t":"-112.2234"},"name":{"$t":"AZK9"},"phone":{},"state":{"$t":"AZ"},"address2":{},"email":{"$t":"azk9org@gmail.com"},"city":{"$t":"Peoria"},"zip":{"$t":"85381"},"fax":{},"latitude":{"$t":"33.6059"},"id":{"$t":"AZ398"},"address1":{"$t":"7615
+        W Acoma Dr."}},{"country":{"$t":"US"},"longitude":{"$t":"-116.9125"},"name":{"$t":"Adopt
+        a Friend Forever Rescue"},"phone":{"$t":"619-670-9824"},"state":{"$t":"CA"},"address2":{},"email":{"$t":"moyamarie@msn.com"},"city":{"$t":"El
+        Cajon"},"zip":{"$t":"92021"},"fax":{},"latitude":{"$t":"32.8216"},"id":{"$t":"CA1207"},"address1":{"$t":"P.O.
+        Box 2754"}},{"country":{"$t":"US"},"longitude":{"$t":"-117.2195"},"name":{"$t":"TLC
+        of IE"},"phone":{"$t":"(951)247-6473 "},"state":{"$t":"CA"},"address2":{},"email":{"$t":"tlcofie@gmail.com"},"city":{"$t":"Moreno
+        Valley"},"zip":{"$t":"92557"},"fax":{},"latitude":{"$t":"33.9474"},"id":{"$t":"CA1282"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-118.118"},"name":{"$t":"Adoptables
+        at spcaLA"},"phone":{"$t":"562-570-7722 "},"state":{"$t":"CA"},"address2":{},"email":{"$t":"info@spcala.com"},"city":{"$t":"Long
+        Beach"},"zip":{"$t":"90815"},"fax":{},"latitude":{"$t":"33.7941"},"id":{"$t":"CA366"},"address1":{"$t":"7700
+        E Spring St"}},{"country":{"$t":"US"},"longitude":{"$t":"-122.3639"},"name":{"$t":"The
+        Milo Foundation"},"phone":{"$t":"(510) 900-2275"},"state":{"$t":"CA"},"address2":{},"email":{"$t":"mpr@milofoundation.org"},"city":{"$t":"Point
+        Richmond"},"zip":{"$t":"94801"},"fax":{},"latitude":{"$t":"37.9405"},"id":{"$t":"CA387"},"address1":{"$t":"220
+        S. Garrard Blvd."}},{"country":{"$t":"US"},"longitude":{"$t":"-119.2515"},"name":{"$t":"Humane
+        Society of Ventura County"},"phone":{"$t":"805-656-5031 "},"state":{"$t":"CA"},"address2":{},"email":{"$t":"animals@humanesocietyvc.org"},"city":{"$t":"Ojai"},"zip":{"$t":"93023"},"fax":{},"latitude":{"$t":"34.441"},"id":{"$t":"CA656"},"address1":{"$t":"402
+        Bryant St."}},{"country":{"$t":"US"},"longitude":{"$t":"-80.2789"},"name":{"$t":"K94U
+        Rescue"},"phone":{"$t":"(954) 3445298 "},"state":{"$t":"FL"},"address2":{},"email":{"$t":"adopt@k94urescue.com"},"city":{"$t":"Parkland"},"zip":{"$t":"33076"},"fax":{},"latitude":{"$t":"26.293"},"id":{"$t":"FL156"},"address1":{"$t":"Will
+        be given soon"}},{"country":{"$t":"US"},"longitude":{"$t":"-82.8301"},"name":{"$t":"Pinellas
+        County Animal Services"},"phone":{"$t":"(727)582-2600"},"state":{"$t":"FL"},"address2":{},"email":{"$t":"cmiller@pinellascounty.org"},"city":{"$t":"Largo"},"zip":{"$t":"33774"},"fax":{},"latitude":{"$t":"27.882"},"id":{"$t":"FL367"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-84.4189"},"name":{"$t":"Tri-County
+        Animal Rescue Center"},"phone":{"$t":"706-326-7196"},"state":{"$t":"GA"},"address2":{},"email":{"$t":"andrea31803@yahoo.com"},"city":{"$t":"Mauk"},"zip":{"$t":"31058"},"fax":{},"latitude":{"$t":"32.5"},"id":{"$t":"GA463"},"address1":{"$t":"179
+        Greyhound Dog Rd"}},{"country":{"$t":"US"},"longitude":{"$t":"-84.8126"},"name":{"$t":"TenderHeart
+        & Great Pyr Rescue"},"phone":{"$t":"678-378-2803"},"state":{"$t":"GA"},"address2":{},"email":{"$t":"tenderheartrescue@gmail.com"},"city":{"$t":"Newnan"},"zip":{"$t":"30263"},"fax":{},"latitude":{"$t":"33.384"},"id":{"$t":"GA667"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-144.8856"},"name":{"$t":"Guam
+        Animals In Need"},"phone":{"$t":"(671) 653-4246"},"state":{"$t":"GU"},"address2":{"$t":"Just
+        North of Yigo Gym"},"email":{},"city":{"$t":"Yigo"},"zip":{"$t":"96929"},"fax":{},"latitude":{"$t":"13.5344"},"id":{"$t":"GU01"},"address1":{"$t":"1/2
+        mile North of Our Lady of Lourdes Catholic Church"}},{"country":{"$t":"US"},"longitude":{"$t":"-89.8047"},"name":{"$t":"Benld
+        Adopt-A-Pet"},"phone":{"$t":"(217) 835-2538"},"state":{"$t":"IL"},"address2":{"$t":"P.O.Box
+        53"},"email":{"$t":"aap1@frontiernet.net"},"city":{"$t":"Benld"},"zip":{"$t":"62009"},"fax":{},"latitude":{"$t":"39.0904"},"id":{"$t":"IL76"},"address1":{"$t":"807
+        Stewart Rd"}},{"country":{"$t":"US"},"longitude":{"$t":"-85.3827"},"name":{"$t":"Blackford
+        County Animal Shelter"},"phone":{"$t":"765-348-5284  "},"state":{"$t":"IN"},"address2":{},"email":{"$t":"blackfordcountyanimalshelter@yahoo.com"},"city":{"$t":"Hartford
+        City"},"zip":{"$t":"47348"},"fax":{},"latitude":{"$t":"40.441"},"id":{"$t":"IN173"},"address1":{"$t":"2525
+        N. 200 E."}},{"country":{"$t":"US"},"longitude":{"$t":"-85.2597"},"name":{"$t":"Humane
+        Society of Noble County,Inc."},"phone":{"$t":"260-347-2563   "},"state":{"$t":"IN"},"address2":{"$t":"PO
+        Box 471"},"email":{"$t":"humanesocietynoblecounty@gmail.com"},"city":{"$t":"Kendallville"},"zip":{"$t":"46755"},"fax":{},"latitude":{"$t":"41.4446"},"id":{"$t":"IN213"},"address1":{"$t":"1305
+        Sherman Street"}},{"country":{"$t":"US"},"longitude":{"$t":"-98.7848"},"name":{"$t":"Golden
+        Belt Humane Society"},"phone":{"$t":"620-792-4297"},"state":{"$t":"KS"},"address2":{},"email":{"$t":"directorgoldenbelt@gmail.com"},"city":{"$t":"Great
+        Bend"},"zip":{"$t":"67530"},"fax":{},"latitude":{"$t":"38.3775"},"id":{"$t":"KS77"},"address1":{"$t":"151
+        S Hwy 281"}},{"country":{"$t":"US"},"longitude":{"$t":"-88.6444"},"name":{"$t":"Mayfield/Graves
+        County Animal Shelter"},"phone":{"$t":"270-251-0130"},"state":{"$t":"KY"},"address2":{},"email":{"$t":"mayfieldshelter@mewsbb.com"},"city":{"$t":"Mayfield"},"zip":{"$t":"42066"},"fax":{},"latitude":{"$t":"36.7319"},"id":{"$t":"KY55"},"address1":{"$t":"500
+        North 12th Street"}},{"country":{"$t":"US"},"longitude":{"$t":"-87.4951"},"name":{"$t":"Pet
+        Lovers United, Inc."},"phone":{"$t":"270-875-7170"},"state":{"$t":"KY"},"address2":{},"email":{"$t":"loveofpets@vci.net"},"city":{"$t":"Madisonville"},"zip":{"$t":"42431"},"fax":{},"latitude":{"$t":"37.3198"},"id":{"$t":"KY97"},"address1":{"$t":"PO
+        Box 1701"}},{"country":{"$t":"US"},"longitude":{"$t":"-77.2421"},"name":{"$t":"Annies
+        Orphans"},"phone":{"$t":"301-741-4151 "},"state":{"$t":"MD"},"address2":{},"email":{"$t":"annies_orphans@hotmail.com"},"city":{"$t":"Gaithersburg"},"zip":{"$t":"20878"},"fax":{},"latitude":{"$t":"39.1127"},"id":{"$t":"MD206"},"address1":{}},{"country":{"$t":"US"},"longitude":{"$t":"-83.1807"},"name":{"$t":"Heavenly
+        Paws of Michigan"},"phone":{},"state":{"$t":"MI"},"address2":{},"email":{"$t":"rescue@heavenlypawsmi.com"},"city":{"$t":"Rochester
+        Hills"},"zip":{"$t":"48309"},"fax":{},"latitude":{"$t":"42.6728"},"id":{"$t":"MI764"},"address1":{"$t":"Rochester"}},{"country":{"$t":"US"},"longitude":{"$t":"-83.9476"},"name":{"$t":"Amazing
+        Grace Animal Rescue"},"phone":{"$t":"989-792-0346   "},"state":{"$t":"MI"},"address2":{},"email":{"$t":"profsir@aol.com"},"city":{"$t":"Saginaw"},"zip":{"$t":"48604"},"fax":{},"latitude":{"$t":"43.472"},"id":{"$t":"MI799"},"address1":{"$t":"3365
+        Freeland Road"}},{"country":{"$t":"US"},"longitude":{"$t":"-93.341"},"name":{"$t":"Underdog
+        Rescue, MN"},"phone":{"$t":"952-929-0777"},"state":{"$t":"MN"},"address2":{},"email":{"$t":"lacey@underdogrescuemn.com"},"city":{"$t":"Saint
+        Louis Park"},"zip":{"$t":"55416"},"fax":{},"latitude":{"$t":"44.9474"},"id":{"$t":"MN49"},"address1":{"$t":"PO
+        Box 16453"}},{"country":{"$t":"US"},"longitude":{"$t":"-90.1896"},"name":{"$t":"American
+        Brussels Griffon Rescue Alliance"},"phone":{"$t":"909-797-0777"},"state":{"$t":"MS"},"address2":{},"email":{"$t":"affengriffonrescue@gmail.com"},"city":{"$t":"Jackson"},"zip":{"$t":"39201"},"fax":{},"latitude":{"$t":"32.2932"},"id":{"$t":"MS113"},"address1":{}}]},"header":{"timestamp":{"$t":"2017-09-29T22:38:50Z"},"status":{"message":{},"code":{"$t":"100"}},"version":{"$t":"0.1"}},"@xsi:noNamespaceSchemaLocation":"http://api.petfinder.com/schemas/0.9/petfinder.xsd"}}'
+    http_version: 
+  recorded_at: Fri, 29 Sep 2017 22:38:50 GMT
+recorded_with: VCR 3.0.3

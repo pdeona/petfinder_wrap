@@ -2,10 +2,15 @@
 
 A simple gem for the Petfinder API using JSON responses and a traversal method.
 
+Added in 1.0.4:
+* `<#Client>.list_shelters_by_breed` => returns a list of shelter objects matching the passed in `Breed` object.
+
+* All API endpoints have now been built out. Please submit issues or bugs to the link at the bottom of the page.
+
 Coming in the next release:
 
-* Options hashes (you rubes love options hashes)
-* <#Breed>.search_by instance method
+* Options hashes (you rubes love options hashes) for sending in the optional parameters each API method allows
+
 
 ## Installation
 
