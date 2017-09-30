@@ -16,11 +16,7 @@ module Petfinder
     def find_pet id
       find_pet_request = API_BASE_URI + "pet.get?key=#{@api_key}&id=#{id}&format=json"
       response = open(find_pet_request).read
-      if resp = JSON.parse(response)
-        pet = Petfinder::Pet.new(resp["petfinder"]["pet"])
-      else
-        raise Petfinder::Error.new "No valid JSON response from API"
-      end
+      parse_single response, "pet"
     end
 
     def find_pets animal, zip_code
@@ -32,11 +28,7 @@ module Petfinder
     def get_shelter id
       get_shelter_request = API_BASE_URI + "shelter.get?key=#{@api_key}&id=#{id}&format=json"
       response = open(get_shelter_request).read
-      if resp = JSON.parse(response)
-        shelter = Petfinder::Shelter.new(resp["petfinder"]["shelter"])
-      else
-        raise Petfinder::Error.new "No valid JSON response from API"
-      end
+      parse_single response, "shelter"
     end
 
     def get_shelter_pets shelter
@@ -72,6 +64,15 @@ module Petfinder
     end
 
     private
+
+      def parse_single response, type
+        if resp = JSON.parse(response)
+          ruby = "Petfinder::#{type.capitalize}.new(resp['petfinder']['#{type}'])"
+          eval(ruby)
+        else
+          raise Petfinder::Error.new "No valid JSON response from API"
+        end
+      end
 
       def parse_multiple response, type
         res = []
