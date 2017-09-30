@@ -17,16 +17,7 @@ module Petfinder
       find_pet_request = API_BASE_URI + "pet.get?key=#{@api_key}&id=#{id}&format=json"
       response = open(find_pet_request).read
       if resp = JSON.parse(response)
-        begin
-          pet = Petfinder::Pet.new(resp["petfinder"]["pet"])
-          if pet.attributes.nil?
-            raise Petfinder::Error.new "Invalid response received from API. Check your query"
-          else
-            pet
-          end
-        rescue Petfinder::Error => e
-          puts e.message
-        end
+        pet = Petfinder::Pet.new(resp["petfinder"]["pet"])
       else
         raise Petfinder::Error.new "No valid JSON response from API"
       end
@@ -34,7 +25,6 @@ module Petfinder
 
     def find_pets animal, zip_code
       find_pets_request = API_BASE_URI + "pet.find?key=#{@api_key}&animal=#{animal}&location=#{zip_code}&output=basic&format=json"
-      # p find_pets_request
       response = open(find_pets_request).read
       parse_multiple response, "pet"
     end
@@ -44,15 +34,6 @@ module Petfinder
       response = open(get_shelter_request).read
       if resp = JSON.parse(response)
         shelter = Petfinder::Shelter.new(resp["petfinder"]["shelter"])
-        begin
-          if shelter.attributes.nil?
-            raise Petfinder::Error.new "No pets received from API. Check your query"
-          else
-            shelter
-          end
-        rescue Petfinder::Error => e
-          puts e.message
-        end
       else
         raise Petfinder::Error.new "No valid JSON response from API"
       end
@@ -84,24 +65,10 @@ module Petfinder
 
     def list_shelters_by_breed breed
       breed_name = breed.name.split(" ").join
-      # breed_name.capitalize!
       list_shelters_by_breed_request = API_BASE_URI + \
-                    "shelter.listByBreed?key=#{@api_key}&animal=#{breed.animal}&breed=#{breed_name}&format=json"
+                    "shelter.listByBreed?key=#{@api_key}&animal=#{breed.animal}&breed=#{breed.name}&format=json"
       response = open(list_shelters_by_breed_request).read
-      res = []
-      if resp = JSON.parse(response)
-        begin
-          resp["petfinder"]["shelters"]["shelter"].each do |shelter|
-            res << Petfinder::Shelter.new(shelter)
-          end
-        rescue NoMethodError => e
-          puts e.message
-          puts "Invalid response received from API. Check your query."
-        end
-      else
-        raise Petfinder::Error "No valid JSON response received from API"
-      end
-      res
+      parse_multiple response, "shelter"
     end
 
     private

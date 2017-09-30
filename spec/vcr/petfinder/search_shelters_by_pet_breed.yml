@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.petfinder.com/shelter.listByBreed?animal=Dog&breed=PitBullTerrier&format=json&key=31644babd91732885c1b7962a39b02bd
+    uri: http://api.petfinder.com/shelter.listByBreed?animal=Dog&breed=Pit%20Bull%20Terrier&format=json&key=31644babd91732885c1b7962a39b02bd
     body:
       encoding: US-ASCII
       string: ''
@@ -21,7 +21,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Fri, 29 Sep 2017 23:59:10 GMT
+      - Sat, 30 Sep 2017 00:21:17 GMT
       Vary:
       - Accept-Encoding
       X-Frame-Options:
@@ -32,8 +32,8 @@ http_interactions:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"@encoding":"iso-8859-1","@version":"1.0","petfinder":{"@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance","header":{"timestamp":{"$t":"2017-09-29T23:59:10Z"},"status":{"message":{"$t":"invalid
+      string: '{"@encoding":"iso-8859-1","@version":"1.0","petfinder":{"@xmlns:xsi":"http://www.w3.org/2001/XMLSchema-instance","header":{"timestamp":{"$t":"2017-09-30T00:21:17Z"},"status":{"message":{"$t":"invalid
         arguments"},"code":{"$t":"200"}},"version":{"$t":"0.1"}},"@xsi:noNamespaceSchemaLocation":"http://api.petfinder.com/schemas/0.9/petfinder.xsd"}}'
     http_version: 
-  recorded_at: Fri, 29 Sep 2017 23:59:10 GMT
+  recorded_at: Sat, 30 Sep 2017 00:21:17 GMT
 recorded_with: VCR 3.0.3
