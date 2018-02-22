@@ -86,4 +86,4 @@ the same should function for shelters.
 Please see below for bug reporting and pull requests.
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/pdeona/petfinder-wrap.
+Bug reports and pull requests are welcome on GitHub at https://github.com/pdeona/petfinder_wrap.
